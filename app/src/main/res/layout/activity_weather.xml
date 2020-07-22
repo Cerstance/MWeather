@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_white"
+    tools:context=".view.TestActivity" >
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitStart"
+                    android:src="@mipmap/back_100d_1" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="690dp"
+                    android:layout_marginTop="-90dp"
+                    android:scaleType="fitXY"
+                    android:layout_below="@id/background"
+                    android:src="@mipmap/back" />
+
+                <TextView
+                    android:id="@+id/textView_today_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="154dp"
+                    android:text="20°"
+                    android:textColor="@color/white"
+                    android:textSize="60sp" />
+
+                <TextView
+                    android:id="@+id/textView_max_tmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/textView_today_tmp"
+                    android:text="30°/10°"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView_now_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_max_tmp"
+                    android:layout_centerHorizontal="true"
+                    android:text="晴"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView_aqi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_now_text"
+                    android:layout_centerHorizontal="true"
+                    android:text="空气 良"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_today_detail"
+                    android:layout_below="@id/textView_aqi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:paddingBottom="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingTop="13dp"
+                    android:text="今日详情"
+                    android:textColor="@color/color_212121"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <LinearLayout
+                    android:id="@+id/detail_line1"
+                    android:layout_below="@id/tv_today_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="24dp">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/iv_today_rain"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="35dp"
+                            android:src="@mipmap/icon_rainfall" />
+
+                        <TextView
+                            android:id="@+id/tv_rain"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="12dp"
+                            android:layout_toEndOf="@+id/iv_today_rain"
+                            android:gravity="center"
+                            android:text="降水量"
+                            android:textColor="@color/color_a4a4a4"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_today_rain"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="4dp"
+                            android:layout_toEndOf="@+id/tv_rain"
+                            android:gravity="center"
+                            android:text="0.5mm"
+                            android:textColor="@color/color_4a4a4a"
+                            android:textSize="14sp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/iv_today_hum"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="30dp"
+                            android:src="@mipmap/icon_hum" />
+
+                        <TextView
+                            android:id="@+id/tv_hum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="12dp"
+                            android:layout_toEndOf="@+id/iv_today_hum"
+                            android:gravity="center"
+                            android:text="湿度"
+                            android:textColor="@color/color_a4a4a4"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_today_hum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="4dp"
+                            android:layout_toEndOf="@id/tv_hum"
+                            android:gravity="center"
+                            android:text="20%"
+                            android:textColor="@color/color_4a4a4a"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/detail_line2"
+                    android:layout_below="@id/detail_line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="24dp">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/iv_today_pressure"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="35dp"
+                            android:src="@mipmap/icon_pressure" />
+
+                        <TextView
+                            android:id="@+id/tv_pressure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="12dp"
+                            android:layout_toEndOf="@+id/iv_today_pressure"
+                            android:gravity="center"
+                            android:text="气压"
+                            android:textColor="@color/color_a4a4a4"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_today_pressure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="4dp"
+                            android:layout_toEndOf="@+id/tv_pressure"
+                            android:gravity="center"
+                            android:text="1001HPA"
+                            android:textColor="@color/color_4a4a4a"
+                            android:textSize="14sp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/iv_today_visible"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="30dp"
+                            android:src="@mipmap/icon_visible" />
+
+                        <TextView
+                            android:id="@+id/tv_visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="12dp"
+                            android:layout_toEndOf="@+id/iv_today_visible"
+                            android:gravity="center"
+                            android:text="能见度"
+                            android:textColor="@color/color_a4a4a4"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_today_visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="4dp"
+                            android:layout_toEndOf="@id/tv_visible"
+                            android:gravity="center"
+                            android:text="14KM"
+                            android:textColor="@color/color_4a4a4a"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/detail_line3"
+                    android:layout_below="@id/detail_line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="24dp">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/iv_today_wind"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="35dp"
+                            android:src="@mipmap/icon_wind" />
+
+                        <TextView
+                            android:id="@+id/tv_wind_dir"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="12dp"
+                            android:layout_toEndOf="@+id/iv_today_wind"
+                            android:gravity="center"
+                            android:text="东北风"
+                            android:textColor="@color/color_a4a4a4"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_wind_sc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="4dp"
+                            android:layout_toEndOf="@+id/tv_wind_dir"
+                            android:gravity="center"
+                            android:text="2级"
+                            android:textColor="@color/color_4a4a4a"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="308dp"
+                    android:layout_below="@id/detail_line3"
+                    android:layout_marginTop="25dp"
+                    android:divider="@null" />
+
+                <RelativeLayout
+                    android:id="@+id/air_title"
+                    android:layout_below="@id/list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="空气质量"
+                        android:textColor="@color/color_4a4a4a"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <GridLayout
+                    android:id="@+id/grid_air"
+                    android:layout_below="@id/air_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:columnCount="1"
+                    android:rowCount="2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tv_pm25"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="35dp"
+                                android:gravity="center"
+                                android:text="pm2.5"
+                                android:textColor="@color/color_a4a4a4"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_today_pm25"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@id/tv_pm25"
+                                android:gravity="center"
+                                android:text="122"
+                                android:textColor="@color/color_4a4a4a"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tv_pm10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="35dp"
+                                android:gravity="center"
+                                android:text="pm10"
+                                android:textColor="@color/color_a4a4a4"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_today_pm10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@id/tv_pm10"
+                                android:gravity="center"
+                                android:text="90"
+                                android:textColor="@color/color_4a4a4a"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tv_so2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="35dp"
+                                android:gravity="center"
+                                android:text="SO2"
+                                android:textColor="@color/color_a4a4a4"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_today_so2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@id/tv_so2"
+                                android:gravity="center"
+                                android:text="12"
+                                android:textColor="@color/color_4a4a4a"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tv_no2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="35dp"
+                                android:gravity="center"
+                                android:text="NO2"
+                                android:textColor="@color/color_a4a4a4"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_today_no2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@id/tv_no2"
+                                android:gravity="center"
+                                android:text="122"
+                                android:textColor="@color/color_4a4a4a"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tv_co"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="35dp"
+                                android:gravity="center"
+                                android:text="CO"
+                                android:textColor="@color/color_a4a4a4"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_today_co"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@id/tv_co"
+                                android:gravity="center"
+                                android:text="90"
+                                android:textColor="@color/color_4a4a4a"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tv_o3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="35dp"
+                                android:gravity="center"
+                                android:text="O³"
+                                android:textColor="@color/color_a4a4a4"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_today_o3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_toEndOf="@id/tv_o3"
+                                android:gravity="center"
+                                android:text="12"
+                                android:textColor="@color/color_4a4a4a"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </GridLayout>
+                <ImageView
+                    android:id="@+id/iv_line"
+                    android:layout_below="@id/grid_air"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/color_ececec" />
+            </RelativeLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_loc"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:src="@mipmap/icon_loc" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="13dp"
+            android:textColor="@color/white"
+            android:text="北京市"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_add_city"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/tv_location"
+            android:padding="8dp"
+            android:src="@mipmap/icon_add_city"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/ll_round"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_below="@+id/tv_location"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="7dp"
+            android:orientation="horizontal" />
+
+        <ImageView
+            android:id="@+id/iv_set"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp"
+            android:padding="14dp"
+            android:src="@mipmap/icon_set"
+            android:visibility="visible" />
+    </RelativeLayout>
+</FrameLayout>
